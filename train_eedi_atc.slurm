@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH -N 1 # Number of Nodes
 #SBATCH --job-name=lmkt_train
-#SBATCH --output=lmkt_%j.out
-#SBATCH --error=lmkt_%j.err
+#SBATCH --output=logs/lmkt_%j.out
+#SBATCH --error=logs/lmkt_%j.err
 
 #SBATCH -p gpu
 #SBATCH --gpus=1
