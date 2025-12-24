@@ -1,0 +1,72 @@
+Arguments: Namespace(dataset='eedi', split_by_subject=False, typical_cutoff=1, tag_src='atc', debug=False, model_type='lmkt', model_name='lmkt_eedi_atc', base_model='meta-llama/Meta-Llama-3.1-8B-Instruct', inc_first_label=False, batch_size=1, crossval=True, testonval=False, agg='mean-ar', pack_kcs=True, quantize=True, prompt_inc_labels=False, emb_size=None, func=<function test at 0x718fb8385120>, epochs=3, lr=0.0002, wd=0.01, gc=1.0, grad_accum_steps=64, r=16, lora_alpha=16)
+Fold 1...
+Initializing inference-time model from fine-tuned LoRA adapters
+0 / 395 dialogues failed processing
+Number of data points: 1554
+Loss: 0.6582
+Overall (1554 samples):
+GT - True: 954.0, False: 600.0; Pred - True: 1284.0, False: 270.0
+Acc: 63.58, AUC: 63.58, Prec: 65.11, Rec: 87.63, F1: 74.71
+Final Turn (336 samples):
+GT - True: 267.0, False: 69.0; Pred - True: 287.0, False: 49.0
+Acc: 75.00, AUC: 64.36, Prec: 81.88, Rec: 88.01, F1: 84.84
+
+Fold 2...
+Initializing inference-time model from fine-tuned LoRA adapters
+0 / 395 dialogues failed processing
+Number of data points: 1554
+Loss: 0.6561
+Overall (1554 samples):
+GT - True: 954.0, False: 600.0; Pred - True: 1241.0, False: 313.0
+Acc: 63.26, AUC: 62.47, Prec: 65.43, Rec: 85.12, F1: 73.99
+Final Turn (336 samples):
+GT - True: 267.0, False: 69.0; Pred - True: 287.0, False: 49.0
+Acc: 74.40, AUC: 59.09, Prec: 81.53, Rec: 87.64, F1: 84.48
+
+Fold 3...
+Initializing inference-time model from fine-tuned LoRA adapters
+0 / 395 dialogues failed processing
+Number of data points: 1554
+Loss: 0.6900
+Overall (1554 samples):
+GT - True: 954.0, False: 600.0; Pred - True: 1532.0, False: 22.0
+Acc: 61.78, AUC: 60.88, Prec: 61.75, Rec: 99.16, F1: 76.11
+Final Turn (336 samples):
+GT - True: 267.0, False: 69.0; Pred - True: 335.0, False: 1.0
+Acc: 79.76, AUC: 65.29, Prec: 79.70, Rec: 100.00, F1: 88.70
+
+Fold 4...
+Initializing inference-time model from fine-tuned LoRA adapters
+0 / 395 dialogues failed processing
+Number of data points: 1554
+Loss: 0.6441
+Overall (1554 samples):
+GT - True: 954.0, False: 600.0; Pred - True: 1281.0, False: 273.0
+Acc: 62.48, AUC: 62.05, Prec: 64.48, Rec: 86.58, F1: 73.91
+Final Turn (336 samples):
+GT - True: 267.0, False: 69.0; Pred - True: 284.0, False: 52.0
+Acc: 74.70, AUC: 62.75, Prec: 82.04, Rec: 87.27, F1: 84.57
+
+Fold 5...
+Initializing inference-time model from fine-tuned LoRA adapters
+0 / 395 dialogues failed processing
+Number of data points: 1554
+Loss: 0.6567
+Overall (1554 samples):
+GT - True: 954.0, False: 600.0; Pred - True: 1169.0, False: 385.0
+Acc: 63.26, AUC: 62.72, Prec: 66.38, Rec: 81.34, F1: 73.10
+Final Turn (336 samples):
+GT - True: 267.0, False: 69.0; Pred - True: 279.0, False: 57.0
+Acc: 76.79, AUC: 68.13, Prec: 83.87, Rec: 87.64, F1: 85.71
+
+Loss: $0.66_{\pm 0.02}$
+Acc: $62.87_{\pm 0.65}$
+AUC: $62.34_{\pm 0.89}$
+Prec: $64.63_{\pm 1.57}$
+Rec: $87.97_{\pm 5.99}$
+F1: $74.36_{\pm 1.01}$
+Acc (Final): $76.13_{\pm 2.00}$
+AUC (Final): $63.93_{\pm 2.98}$
+Prec (Final): $81.81_{\pm 1.33}$
+Rec (Final): $90.11_{\pm 4.95}$
+F1 (Final): $85.66_{\pm 1.58}$

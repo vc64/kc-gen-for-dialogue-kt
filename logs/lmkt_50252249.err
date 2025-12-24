@@ -1,0 +1,32 @@
+No conda package cache directories found outside your home directory. To
+prevent conda from filling up your home directory, you can create a new
+directory at `/work/pi_<your_pi_name>/$USER/.conda/pkgs` and reload the module. 
+No conda environment directories found outside your home directory. To prevent
+conda from filling up your home directory, you can create a new directory at
+`/work/pi_<your_pi_name>/$USER/.conda/envs` and reload the module. 
+Loading conda version miniforge3-24.7.1
+Loading cuda version 12.6
+Loading cudnn version 8.9.7.29-12
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:17<00:52, 17.47s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:32<00:31, 15.94s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:51<00:17, 17.61s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:55<00:00, 12.06s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:55<00:00, 13.87s/it]
+Traceback (most recent call last):
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 71, in <module>
+    main()
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 68, in main
+    args.func(args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 127, in train
+    return crossval(args, fn)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 92, in crossval
+    metrics = fn(args, fold)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 240, in train_lmkt
+    train_dataset = KTDataset(train_df, tokenizer, args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/kt_data_loading.py", line 120, in __init__
+    {"role": "user", "content": kt_user_prompt(sample, dialogue, turn["turn"], None, args)},
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/prompting.py", line 141, in kt_user_prompt
+    prompt += get_dialogue_text(dialogue_anno, turn_idx=turn_idx, include_labels=args.prompt_inc_labels)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/prompting.py", line 11, in get_dialogue_text
+    if turn["teacher"]:
+KeyError: 'teacher'

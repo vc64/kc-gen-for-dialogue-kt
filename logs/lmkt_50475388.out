@@ -1,0 +1,61 @@
+Arguments: Namespace(epochs=3, lr=0.0002, wd=0.01, gc=1.0, grad_accum_steps=64, r=16, lora_alpha=16, optim='adamw', pt_model_name=None, hyperparam_sweep=False, dataset='eedi', split_by_subject=False, typical_cutoff=1, tag_src='atc', debug=False, model_type='lmkt', model_name='lmkt_eedi_cc', base_model='meta-llama/Meta-Llama-3.1-8B-Instruct', inc_first_label=False, batch_size=1, crossval=True, testonval=False, agg='mean-ar', pack_kcs=True, quantize=True, prompt_inc_labels=False, emb_size=None, func=<function train at 0x77eaf1dd55a0>)
+Fold 1...
+Initializing trainable model with new LoRA adapters
+trainable params: 41,943,040 || all params: 8,072,204,288 || trainable%: 0.5196
+0 / 945 dialogues failed processing
+Number of data points: 4936
+Max tokens per prompt: 2070
+Total tokens: 10217520
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are an experienced math teacher. You are given a dialogue between a student and teacher where the student is attempting to solve a math problem. You are also given this math problem. Your job is to predict if the student has a particular knowledge component at the current point in the dialogue. Please follow these instructions carefully when making your prediction:
+- The student will need to possess this knowledge component in order to respond correctly to the teacher's most recent question.
+- Use previous information in the dialogue to determine if the student has this knowledge component or not.
+- Only respond with a single word, "True" or "False".<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+[BEGIN DIALOGUE]
+Teacher Turn 1: Hello Amelia 👋👋👋. Need some help with this question?!
+Student Turn 1: yes
+Teacher Turn 2: Of course 😁👍. For this one you need to think about place value columns... What place value column is the 3 in, any ideas? 💡
+[END DIALOGUE]
+
+Knowledge Component:<|eot_id|> Understand a fraction a/b with a > 1 as a sum of fractions 1/b.
+Grade 4 expectations in this domain are limited to fractions with denominators 2, 3, 4, 5, 6, 8, 10, 12, and 100.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+<|eot_id|>
+Encoding(num_tokens=2070, attributes=[ids, type_ids, tokens, offsets, attention_mask, special_tokens_mask, overflowing])
+0 / 237 dialogues failed processing
+Number of data points: 1110
+Max tokens per prompt: 1257
+Total tokens: 1395270
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are an experienced math teacher. You are given a dialogue between a student and teacher where the student is attempting to solve a math problem. You are also given this math problem. Your job is to predict if the student has a particular knowledge component at the current point in the dialogue. Please follow these instructions carefully when making your prediction:
+- The student will need to possess this knowledge component in order to respond correctly to the teacher's most recent question.
+- Use previous information in the dialogue to determine if the student has this knowledge component or not.
+- Only respond with a single word, "True" or "False".<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+[BEGIN DIALOGUE]
+Student Turn 0: Hi
+Teacher Turn 1: Hello Amina 😁👋. How can I help?!
+Student Turn 1: I need help with this question
+Teacher Turn 2: Let's try it by putting in 100 and seeing if we get 900 and then 800... 😁. Does that make sense?!
+[END DIALOGUE]
+
+Knowledge Component:<|eot_id|> Apply properties of operations as strategies to multiply and divide. (Students need not use formal terms for these properties.) ^( )Examples: If 6 × 4 = 24 is known, then 4 × 6 = 24 is also known. (Commutative property of multiplication.) 3 × 5 × 2 can be found by 3 × 5 = 15, then 15 × 2 = 30, or by 5 × 2 = 10, then 3 × 10 = 30. (Associative property of multiplication.) Knowing that 8 × 5 = 40 and 8 × 2 = 16, one can find 8 × 7 as 8 × (5 + 2) = (8 × 5) + (8 × 2) = 40 + 16 = 56. (Distributive property.)<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+<|eot_id|> Fluently multiply and divide within 100, using strategies such as the relationship between multiplication and division (e.g., knowing that 8 × 5 = 40, one knows 40 ÷ 5 = 8) or properties of operations. By the end of Grade 3, know from memory all products of two one-digit numbers.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+<|eot_id|> Apply the properties of operations to generate equivalent expressions. For example, apply the distributive property to the expression 3 (2 + x) to produce the equivalent expression 6 + 3x; apply the distributive property to the expression 24x + 18y to produce the equivalent expression 6 (4x + 3y); apply properties of operations to y + y + y to produce the equivalent expression 3y.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+<|eot_id|> Identify when two expressions are equivalent (i.e., when the two expressions name the same number regardless of which value is substituted into them). For example, the expressions y + y + y and 3y are equivalent because they name the same number regardless of which number y stands for.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+<|eot_id|>
+Encoding(num_tokens=1257, attributes=[ids, type_ids, tokens, offsets, attention_mask, special_tokens_mask, overflowing])
+Epoch 1

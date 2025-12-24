@@ -1,0 +1,45 @@
+Removing conda version miniforge3-24.7.1
+No conda package cache directories found outside your home directory. To
+prevent conda from filling up your home directory, you can create a new
+directory at `/work/pi_<your_pi_name>/$USER/.conda/pkgs` and reload the module. 
+No conda environment directories found outside your home directory. To prevent
+conda from filling up your home directory, you can create a new directory at
+`/work/pi_<your_pi_name>/$USER/.conda/envs` and reload the module. 
+Loading conda version miniforge3-24.7.1
+Loading cuda version 12.6
+Loading cudnn version 8.9.7.29-12
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:11,  3.84s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:14<00:15,  7.77s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:19<00:06,  6.37s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:19<00:00,  4.10s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:19<00:00,  4.92s/it]
+  0%|          | 0/1554 [00:00<?, ?it/s]/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py:101: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:304.)
+  freqs = (inv_freq_expanded.float() @ position_ids_expanded.float()).transpose(1, 2)
+/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/torch/nn/modules/linear.py:134: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:304.)
+  return F.linear(input, self.weight, self.bias)
+/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/transformers/integrations/sdpa_attention.py:96: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:304.)
+  attn_output = torch.nn.functional.scaled_dot_product_attention(
+  0%|          | 0/1554 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 71, in <module>
+    main()
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 68, in main
+    args.func(args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 135, in test
+    return crossval(args, fn)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 92, in crossval
+    metrics = fn(args, fold)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 324, in test_lmkt
+    loss, kc_probs, corr_probs = get_loss(model, batch, true_token, false_token, args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 222, in get_lmkt_loss_packed
+    loss = torch.nn.BCELoss()(corr_probs, batch["labels"])
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 727, in forward
+    return F.binary_cross_entropy(
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/torch/nn/functional.py", line 3526, in binary_cross_entropy
+    return torch._C._nn.binary_cross_entropy(input, target, weight, reduction_enum)
+RuntimeError: Found dtype Float but expected BFloat16

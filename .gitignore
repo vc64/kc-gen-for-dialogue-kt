@@ -1,8 +1,6 @@
 *.pyc
-data/src/ATC
-data/src/mathdial
-data/src/*.csv
-data/src/*.json
-results/**/*.json
-results/**/*.txt
-results/**/*.csv
+.env
+*.safetensors
+results/*.json
+results/*.txt
+results/*.csv

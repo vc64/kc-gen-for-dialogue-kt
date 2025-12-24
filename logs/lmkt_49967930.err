@@ -1,0 +1,47 @@
+No conda package cache directories found outside your home directory. To
+prevent conda from filling up your home directory, you can create a new
+directory at `/work/pi_<your_pi_name>/$USER/.conda/pkgs` and reload the module. 
+No conda environment directories found outside your home directory. To prevent
+conda from filling up your home directory, you can create a new directory at
+`/work/pi_<your_pi_name>/$USER/.conda/envs` and reload the module. 
+Loading conda version miniforge3-24.7.1
+Loading cuda version 12.6
+Loading cudnn version 8.9.7.29-12
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.62s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.81s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:04<00:01,  1.47s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.02s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:04<00:00,  1.24s/it]
+Traceback (most recent call last):
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'annotation'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 71, in <module>
+    main()
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 68, in main
+    args.func(args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 127, in train
+    return crossval(args, fn)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 92, in crossval
+    metrics = fn(args, fold)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 240, in train_lmkt
+    train_dataset = KTDataset(train_df, tokenizer, args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/kt_data_loading.py", line 105, in __init__
+    dialogue = apply_annotations(sample)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/kt_data_loading.py", line 14, in apply_annotations
+    anno = sample["annotation"]
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/pandas/core/series.py", line 981, in __getitem__
+    return self._get_value(key)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/pandas/core/series.py", line 1089, in _get_value
+    loc = self.index.get_loc(label)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'annotation'

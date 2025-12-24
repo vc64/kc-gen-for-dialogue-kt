@@ -1,0 +1,66 @@
+Arguments: Namespace(epochs=5, lr=0.0002, wd=0.01, gc=1.0, grad_accum_steps=64, r=16, lora_alpha=16, optim='adamw', pt_model_name=None, hyperparam_sweep=False, dataset='trial', split_by_subject=False, typical_cutoff=1, tag_src='atc', debug=False, model_type='lmkt', model_name='lmkt_trial_atc', base_model='meta-llama/Meta-Llama-3.1-8B-Instruct', inc_first_label=False, batch_size=1, crossval=True, testonval=False, agg='mean-ar', pack_kcs=True, quantize=True, prompt_inc_labels=False, emb_size=None, func=<function train at 0x75be6df1d5a0>)
+Fold 1...
+Initializing trainable model with new LoRA adapters
+trainable params: 41,943,040 || all params: 8,072,204,288 || trainable%: 0.5196
+0 / 80 dialogues failed processing
+Number of data points: 459
+Max tokens per prompt: 1992
+Total tokens: 914328
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are an experienced math teacher. You are given a dialogue between a student and teacher where the student is attempting to solve a math problem. You are also given this math problem. Your job is to predict if the student has a particular knowledge component at the current point in the dialogue. Please follow these instructions carefully when making your prediction:
+- The student will need to possess this knowledge component in order to respond correctly to the teacher's most recent question.
+- Use previous information in the dialogue to determine if the student has this knowledge component or not.
+- Only respond with a single word, "True" or "False".<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+[BEGIN DIALOGUE]
+Teacher Turn 1: Hello Alina! How can I help?
+Student Turn 1: I don't know the question
+Teacher Turn 2: Ok! Why don't we try the different options... so put in A. 2m - 16... then take away 4
+Student Turn 2: Ok
+Teacher Turn 3: What would that give us?
+[END DIALOGUE]
+
+Knowledge Component:<|eot_id|> Write, read, and evaluate expressions in which letters stand for numbers.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+<|eot_id|> Apply the properties of operations to generate equivalent expressions. For example, apply the distributive property to the expression 3 (2 + x) to produce the equivalent expression 6 + 3x; apply the distributive property to the expression 24x + 18y to produce the equivalent expression 6 (4x + 3y); apply properties of operations to y + y + y to produce the equivalent expression 3y.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+<|eot_id|>
+Encoding(num_tokens=1992, attributes=[ids, type_ids, tokens, offsets, attention_mask, special_tokens_mask, overflowing])
+0 / 20 dialogues failed processing
+Number of data points: 100
+Max tokens per prompt: 2070
+Total tokens: 207000
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are an experienced math teacher. You are given a dialogue between a student and teacher where the student is attempting to solve a math problem. You are also given this math problem. Your job is to predict if the student has a particular knowledge component at the current point in the dialogue. Please follow these instructions carefully when making your prediction:
+- The student will need to possess this knowledge component in order to respond correctly to the teacher's most recent question.
+- Use previous information in the dialogue to determine if the student has this knowledge component or not.
+- Only respond with a single word, "True" or "False".<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+[BEGIN DIALOGUE]
+Teacher Turn 1: Hi there :)
+Student Turn 1: hello
+Teacher Turn 2: I see you're struggling a little on rounding :)
+Student Turn 2: yes
+Teacher Turn 3: The question was to round 7.503 to the nearest whole number, you chose 7.5 which is that number rounded, but it's to 1dp instead of the nearest whole number. Whole numbers are numbers that don't have decimal places, such as 10, 5, 18, and so on
+[END DIALOGUE]
+
+Knowledge Component:<|eot_id|> Use place value understanding to round decimals to any place.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+<|eot_id|>
+Encoding(num_tokens=2070, attributes=[ids, type_ids, tokens, offsets, attention_mask, special_tokens_mask, overflowing])
+Epoch 1
+Train Loss: 1.0631, Val Loss: 0.6923
+Best! Saving model...
+Epoch 2
+Train Loss: 0.6834, Val Loss: 0.7890
+Epoch 3
+Train Loss: 0.6682, Val Loss: 0.7080
+Epoch 4

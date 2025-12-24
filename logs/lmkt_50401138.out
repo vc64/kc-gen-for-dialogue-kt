@@ -1,0 +1,49 @@
+Arguments: Namespace(epochs=5, lr=0.0002, wd=0.01, gc=1.0, grad_accum_steps=64, r=16, lora_alpha=16, optim='adamw', pt_model_name=None, hyperparam_sweep=False, dataset='eedi', split_by_subject=False, typical_cutoff=1, tag_src='atc', debug=False, model_type='lmkt', model_name='lmkt_eedi_atc', base_model='meta-llama/Meta-Llama-3.1-8B-Instruct', inc_first_label=False, batch_size=1, crossval=True, testonval=False, agg='mean-ar', pack_kcs=True, quantize=True, prompt_inc_labels=False, emb_size=None, func=<function train at 0x7630c43ad090>)
+Fold 1...
+Initializing trainable model with new LoRA adapters
+trainable params: 41,943,040 || all params: 8,072,204,288 || trainable%: 0.5196
+0 / 945 dialogues failed processing
+Number of data points: 4936
+0 / 237 dialogues failed processing
+Number of data points: 1110
+Epoch 1
+Train Loss: 0.6859, Val Loss: 0.7090
+Best! Saving model...
+Epoch 2
+Train Loss: 0.6506, Val Loss: 0.6413
+Best! Saving model...
+Epoch 3
+Train Loss: 0.5906, Val Loss: 0.6325
+Best! Saving model...
+Epoch 4
+Train Loss: 0.4004, Val Loss: 0.9381
+Epoch 5
+Train Loss: 0.1774, Val Loss: 1.1997
+Initializing inference-time model from fine-tuned LoRA adapters
+0 / 395 dialogues failed processing
+Number of data points: 1554
+Loss: 0.6472
+Overall (1554 samples):
+GT - True: 954.0, False: 600.0; Pred - True: 1229.0, False: 325.0
+Acc: 63.26, AUC: 62.80, Prec: 65.58, Rec: 84.49, F1: 73.84
+Final Turn (336 samples):
+GT - True: 267.0, False: 69.0; Pred - True: 277.0, False: 59.0
+Acc: 73.81, AUC: 62.01, Prec: 82.31, Rec: 85.39, F1: 83.82
+
+Fold 2...
+Initializing trainable model with new LoRA adapters
+trainable params: 41,943,040 || all params: 8,072,204,288 || trainable%: 0.5196
+0 / 945 dialogues failed processing
+Number of data points: 4936
+0 / 237 dialogues failed processing
+Number of data points: 1110
+Epoch 1
+Train Loss: 0.7156, Val Loss: 0.6616
+Best! Saving model...
+Epoch 2
+Train Loss: 0.6608, Val Loss: 0.6552
+Best! Saving model...
+Epoch 3
+Train Loss: 0.6498, Val Loss: 0.6429
+Best! Saving model...
+Epoch 4

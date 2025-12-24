@@ -1,0 +1,5 @@
+Arguments: Namespace(dataset='eedi', split_by_subject=False, typical_cutoff=1, tag_src='atc', debug=False, model_type='lmkt', model_name='lmkt_eedi_atc', base_model='meta-llama/Meta-Llama-3.1-8B-Instruct', inc_first_label=False, batch_size=1, crossval=True, testonval=False, agg='mean-ar', pack_kcs=True, quantize=False, prompt_inc_labels=False, emb_size=None, func=<function test at 0x7ace14f4d120>, epochs=3, lr=0.0002, wd=0.01, gc=1.0, grad_accum_steps=64, r=16, lora_alpha=16)
+Fold 1...
+Initializing inference-time model from fine-tuned LoRA adapters
+0 / 395 dialogues failed processing
+Number of data points: 1554

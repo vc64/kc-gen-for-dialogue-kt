@@ -1,0 +1,25 @@
+No conda package cache directories found outside your home directory. To
+prevent conda from filling up your home directory, you can create a new
+directory at `/work/pi_<your_pi_name>/$USER/.conda/pkgs` and reload the module. 
+No conda environment directories found outside your home directory. To prevent
+conda from filling up your home directory, you can create a new directory at
+`/work/pi_<your_pi_name>/$USER/.conda/envs` and reload the module. 
+Loading conda version miniforge3-24.7.1
+Loading cuda version 12.6
+Loading cudnn version 8.9.7.29-12
+usage: main.py train [-h] [--epochs EPOCHS] [--lr LR] [--wd WD] [--gc GC]
+                     [--grad_accum_steps GRAD_ACCUM_STEPS] [--r R]
+                     [--lora_alpha LORA_ALPHA] [--optim {adamw,adafactor}]
+                     [--pt_model_name PT_MODEL_NAME] [--hyperparam_sweep]
+                     [--dataset {comta,mathdial,eedi}] [--split_by_subject]
+                     [--typical_cutoff TYPICAL_CUTOFF] [--tag_src {base,atc}]
+                     [--debug]
+                     [--model_type {lmkt,random,majority,bkt,dkt-multi,dkt-sem,dkt,akt,dkvmn,saint,simplekt}]
+                     [--model_name MODEL_NAME] [--base_model BASE_MODEL]
+                     [--inc_first_label] [--batch_size BATCH_SIZE]
+                     [--crossval] [--testonval]
+                     [--agg {prod,mean-ar,mean-geo}] [--pack_kcs PACK_KCS]
+                     [--quantize QUANTIZE]
+                     [--prompt_inc_labels PROMPT_INC_LABELS]
+                     [--emb_size EMB_SIZE]
+main.py train: error: argument --quantize: expected one argument

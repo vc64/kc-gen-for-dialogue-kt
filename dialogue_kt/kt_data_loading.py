@@ -7,7 +7,7 @@ from sentence_transformers import SentenceTransformer
 
 from dialogue_kt.models.dkt_sem import ALT_ARCH
 from dialogue_kt.prompting import kt_system_prompt, kt_user_prompt, dkt_sem_prompt
-from dialogue_kt.utils import device
+from dialogue_kt.utils import device, to_device
 
 def apply_annotations(sample: dict, apply_na: bool = True):
     dialogue = sample["dialogue"]
@@ -82,18 +82,20 @@ class LMKTDatasetUnpacked(DatasetBase):
         print(f"Number of data points: {len(self.data)}")
 
 class LMKTCollatorUnpacked:
-    def __init__(self, tokenizer):
+    def __init__(self, tokenizer, args):
         self.tokenizer = tokenizer
+        self.args = args
 
     def __call__(self, batch):
         all_prompts = [prompt for sample in batch for prompt in sample["prompts"]]
-        prompts_tokenized = self.tokenizer(all_prompts, return_tensors="pt", padding=True).to(device)
+        prompts_tokenized = self.tokenizer(all_prompts, return_tensors="pt", padding=True)
+        prompts_tokenized = to_device(prompts_tokenized, device, self.args)
         return {
             "input_ids": prompts_tokenized.input_ids,
             "attention_mask": prompts_tokenized.attention_mask,
             "last_idxs": prompts_tokenized.attention_mask.sum(dim=-1) - 2, # Take index of token before eos
-            "num_kcs": torch.LongTensor([len(sample["prompts"]) for sample in batch]).to(device),
-            "labels": torch.Tensor([sample["label"] for sample in batch]).to(device),
+            "num_kcs": to_device(torch.LongTensor([len(sample["prompts"]) for sample in batch]), device, self.args),
+            "labels": to_device(torch.Tensor([sample["label"] for sample in batch]), device, self.args),
             "meta_data": batch
         }
 
@@ -136,15 +138,21 @@ class LMKTDatasetPacked(DatasetBase):
                 })
         print(f"{failed} / {len(data)} dialogues failed processing")
         print(f"Number of data points: {len(self.data)}")
+        #prompts = [sample["prompt"] for sample in self.data]
+        #prompts_tokenized = tokenizer(prompts, return_tensors="pt", padding=True)
+        #lengths = [len(x) for x in prompts_tokenized["input_ids"]]
+        #print(f"Max tokens per prompt: {max(lengths)}")
+        #print(f"Total tokens: {sum(lengths)}")
 
 class LMKTCollatorPacked:
-    def __init__(self, tokenizer):
+    def __init__(self, tokenizer, args):
         self.tokenizer = tokenizer
+        self.args = args
 
     def __call__(self, batch):
         prompts = [sample["prompt"] for sample in batch]
         prompts_tokenized = self.tokenizer(prompts, return_tensors="pt", padding=True)
-        input_ids = prompts_tokenized.input_ids.to(device)
+        input_ids = to_device(prompts_tokenized.input_ids, device, self.args)
         batch_size, max_seq_len = input_ids.shape
         eos_idxs = [
             (input_ids[seq_idx] == self.tokenizer.eos_token_id).nonzero().squeeze().cpu()
@@ -178,11 +186,11 @@ class LMKTCollatorPacked:
         last_idxs = pad_sequence([idxs[3::2] - 1 for idxs in eos_idxs], batch_first=True)
         return {
             "input_ids": input_ids,
-            "attention_mask": attention_mask.unsqueeze(1).to(device), # Add singleton head dimension
-            "position_ids": position_ids.to(device),
+            "attention_mask": to_device(attention_mask.unsqueeze(1), device, self.args), # Add singleton head dimension
+            "position_ids": to_device(position_ids, device, self.args),
             "last_idxs": last_idxs,
-            "num_kcs": torch.LongTensor([len(sample["kcs"]) for sample in batch]).to(device),
-            "labels": torch.Tensor([sample["label"] for sample in batch]).to(device),
+            "num_kcs": to_device(torch.LongTensor([len(sample["kcs"]) for sample in batch]), device, self.args),
+            "labels": to_device(torch.Tensor([sample["label"] for sample in batch]), device, self.args),
             "meta_data": batch
         }
 
@@ -319,3 +327,16 @@ class DKTCollator:
 
 def get_dataloader(dataset: Dataset, collator, batch_size: int, shuffle: bool):
     return DataLoader(dataset, collate_fn=collator, batch_size=batch_size, shuffle=shuffle)
+    
+    # if not batch_len_sampler:
+    #     return DataLoader(dataset, collate_fn=collator, batch_size=batch_size, shuffle=shuffle)
+    
+    # def approx_len(example):
+    #     return len(example["prompt"])
+
+    # lengths = [approx_len(x) for x in dataset.data]
+    # sampler = LengthGroupedSampler(
+    #     batch_size=batch_size,
+    #     lengths=lengths,
+    # )
+    # return DataLoader(dataset, collate_fn=collator, batch_size=batch_size, shuffle=shuffle, sampler=sampler)

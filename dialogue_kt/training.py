@@ -28,7 +28,7 @@ from dialogue_kt.utils import device, get_checkpoint_path
 def apply_defaults(args):
     if args.model_type == "lmkt":
         defaults = {
-            "epochs": 5,
+            "epochs": 3,
             "lr": 2e-4,
             "wd": 1e-2,
             "gc": 1.0,
@@ -224,7 +224,7 @@ def get_lmkt_loss_packed(model, batch, true_token, false_token, args):
 
 def train_lmkt(args, fold):
     # Load language model with trainable LoRA adapters
-    model, tokenizer = get_model(args.base_model, False, pt_model_name=args.pt_model_name, r=args.r, lora_alpha=args.lora_alpha, quantize=args.quantize)
+    model, tokenizer = get_model(args.base_model, False, pt_model_name=args.pt_model_name, r=args.r, lora_alpha=args.lora_alpha, quantize=args.quantize, use_gradient_checkpointing=True)
     model.print_trainable_parameters()
 
     # Load and split dataset, annotated with correctness and KCs
@@ -239,7 +239,7 @@ def train_lmkt(args, fold):
         print(val_df.iloc[0])
     train_dataset = KTDataset(train_df, tokenizer, args)
     val_dataset = KTDataset(val_df, tokenizer, args)
-    collator = KTCollator(tokenizer)
+    collator = KTCollator(tokenizer, args)
     train_dataloader = get_dataloader(train_dataset, collator, args.batch_size, True)
     val_dataloader = get_dataloader(val_dataset, collator, args.batch_size, False)
 
@@ -248,6 +248,7 @@ def train_lmkt(args, fold):
 
     # Do training loop
     if args.optim == "adamw":
+        #optimizer = SOAP(model.parameters(), lr = args.lr, betas=(.95, .95), weight_decay=args.wd, precondition_frequency=10)
         optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.wd)
     else:
         optimizer = transformers.Adafactor(model.parameters(), lr=args.lr, weight_decay=args.wd, relative_step=False)
@@ -303,7 +304,7 @@ def test_lmkt(args, fold):
         test_df = test_df[:10]
         print(test_df.iloc[0])
     test_dataset = KTDataset(test_df, tokenizer, args, skip_first_turn=not args.inc_first_label)
-    collator = KTCollator(tokenizer)
+    collator = KTCollator(tokenizer, args)
     test_dataloader = get_dataloader(test_dataset, collator, args.batch_size, False)
 
     # For finding logits for loss

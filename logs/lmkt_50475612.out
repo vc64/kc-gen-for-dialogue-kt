@@ -1,0 +1,92 @@
+Arguments: Namespace(epochs=3, lr=0.0002, wd=0.01, gc=1.0, grad_accum_steps=64, r=16, lora_alpha=16, optim='adamw', pt_model_name=None, hyperparam_sweep=False, dataset='eedi', split_by_subject=False, typical_cutoff=1, tag_src='atc', debug=False, model_type='lmkt', model_name='lmkt_eedi_cc', base_model='meta-llama/Meta-Llama-3.1-8B-Instruct', inc_first_label=False, batch_size=1, crossval=True, testonval=False, agg='mean-ar', pack_kcs=True, quantize=True, prompt_inc_labels=False, emb_size=None, func=<function train at 0x7a9e987417e0>)
+Fold 1...
+Initializing trainable model with new LoRA adapters
+trainable params: 41,943,040 || all params: 8,072,204,288 || trainable%: 0.5196
+0 / 945 dialogues failed processing
+Number of data points: 4936
+0 / 237 dialogues failed processing
+Number of data points: 1110
+Epoch 1
+Train Loss: 0.6886, Val Loss: 0.6765
+Best! Saving model...
+Epoch 2
+Train Loss: 0.6560, Val Loss: 0.6370
+Best! Saving model...
+Epoch 3
+Train Loss: 0.6234, Val Loss: 0.6302
+Best! Saving model...
+Initializing inference-time model from fine-tuned LoRA adapters
+0 / 395 dialogues failed processing
+Number of data points: 1554
+Loss: 0.6713
+Overall (1554 samples):
+GT - True: 954.0, False: 600.0; Pred - True: 1511.0, False: 43.0
+Acc: 62.36, AUC: 63.09, Prec: 62.21, Rec: 98.53, F1: 76.27
+Final Turn (336 samples):
+GT - True: 267.0, False: 69.0; Pred - True: 331.0, False: 5.0
+Acc: 79.76, AUC: 65.08, Prec: 80.06, Rec: 99.25, F1: 88.63
+
+Fold 2...
+Initializing trainable model with new LoRA adapters
+trainable params: 41,943,040 || all params: 8,072,204,288 || trainable%: 0.5196
+0 / 945 dialogues failed processing
+Number of data points: 4936
+0 / 237 dialogues failed processing
+Number of data points: 1110
+Epoch 1
+Train Loss: 0.6955, Val Loss: 0.6584
+Best! Saving model...
+Epoch 2
+Train Loss: 0.6537, Val Loss: 0.6408
+Best! Saving model...
+Epoch 3
+Train Loss: 0.6062, Val Loss: 0.6336
+Best! Saving model...
+Initializing inference-time model from fine-tuned LoRA adapters
+0 / 395 dialogues failed processing
+Number of data points: 1554
+Loss: 0.6683
+Overall (1554 samples):
+GT - True: 954.0, False: 600.0; Pred - True: 1437.0, False: 117.0
+Acc: 63.26, AUC: 61.89, Prec: 63.33, Rec: 95.39, F1: 76.12
+Final Turn (336 samples):
+GT - True: 267.0, False: 69.0; Pred - True: 316.0, False: 20.0
+Acc: 78.87, AUC: 66.86, Prec: 81.01, Rec: 95.88, F1: 87.82
+
+Fold 3...
+Initializing trainable model with new LoRA adapters
+trainable params: 41,943,040 || all params: 8,072,204,288 || trainable%: 0.5196
+0 / 945 dialogues failed processing
+Number of data points: 4936
+0 / 237 dialogues failed processing
+Number of data points: 1110
+Epoch 1
+Train Loss: 0.6980, Val Loss: 0.6490
+Best! Saving model...
+Epoch 2
+Train Loss: 0.6679, Val Loss: 0.6511
+Epoch 3
+Train Loss: 0.6525, Val Loss: 0.6346
+Best! Saving model...
+Initializing inference-time model from fine-tuned LoRA adapters
+0 / 395 dialogues failed processing
+Number of data points: 1554
+Loss: 0.6533
+Overall (1554 samples):
+GT - True: 954.0, False: 600.0; Pred - True: 1509.0, False: 45.0
+Acc: 61.84, AUC: 61.06, Prec: 61.96, Rec: 98.01, F1: 75.92
+Final Turn (336 samples):
+GT - True: 267.0, False: 69.0; Pred - True: 334.0, False: 2.0
+Acc: 79.46, AUC: 65.31, Prec: 79.64, Rec: 99.63, F1: 88.52
+
+Loss: $0.66_{\pm 0.01}$
+Acc: $62.48_{\pm 0.59}$
+AUC: $62.01_{\pm 0.83}$
+Prec: $62.50_{\pm 0.59}$
+Rec: $97.31_{\pm 1.38}$
+F1: $76.10_{\pm 0.14}$
+Acc (Final): $79.37_{\pm 0.37}$
+AUC (Final): $65.75_{\pm 0.79}$
+Prec (Final): $80.24_{\pm 0.57}$
+Rec (Final): $98.25_{\pm 1.68}$
+F1 (Final): $88.32_{\pm 0.36}$

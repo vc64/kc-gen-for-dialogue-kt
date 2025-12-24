@@ -1,0 +1,9 @@
+Arguments: Namespace(epochs=5, lr=0.0002, wd=0.01, gc=1.0, grad_accum_steps=64, r=16, lora_alpha=16, optim='adamw', pt_model_name=None, hyperparam_sweep=False, dataset='eedi', split_by_subject=False, typical_cutoff=1, tag_src='atc', debug=False, model_type='lmkt', model_name='lmkt_eedi_atc', base_model='meta-llama/Meta-Llama-3.1-8B-Instruct', inc_first_label=False, batch_size=1, crossval=True, testonval=False, agg='mean-ar', pack_kcs=True, quantize=False, prompt_inc_labels=False, emb_size=None, func=<function train at 0x7d0f7d0db130>)
+Fold 1...
+Initializing trainable model with new LoRA adapters
+trainable params: 41,943,040 || all params: 8,072,204,288 || trainable%: 0.5196
+0 / 945 dialogues failed processing
+Number of data points: 4936
+0 / 237 dialogues failed processing
+Number of data points: 1110
+Epoch 1

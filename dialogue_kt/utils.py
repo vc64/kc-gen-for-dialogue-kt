@@ -20,3 +20,6 @@ def bool_type(x: str):
 
 def get_checkpoint_path(model_name: str):
     return f"saved_models/{model_name}"
+
+def to_device(data, device, args):
+    return data.to(device)

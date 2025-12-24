@@ -1,0 +1,31 @@
+No conda package cache directories found outside your home directory. To
+prevent conda from filling up your home directory, you can create a new
+directory at `/work/pi_<your_pi_name>/$USER/.conda/pkgs` and reload the module. 
+No conda environment directories found outside your home directory. To prevent
+conda from filling up your home directory, you can create a new directory at
+`/work/pi_<your_pi_name>/$USER/.conda/envs` and reload the module. 
+Loading conda version miniforge3-24.7.1
+Loading cuda version 12.6
+Loading cudnn version 8.9.7.29-12
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:04<00:14,  4.87s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:09<00:09,  4.79s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:14<00:04,  4.72s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:14<00:00,  2.98s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:14<00:00,  3.64s/it]
+Traceback (most recent call last):
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 71, in <module>
+    main()
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 68, in main
+    args.func(args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 127, in train
+    return crossval(args, fn)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 92, in crossval
+    metrics = fn(args, fold)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 240, in train_lmkt
+    train_dataset = KTDataset(train_df, tokenizer, args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/kt_data_loading.py", line 107, in __init__
+    dialogue = apply_annotations(sample)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/kt_data_loading.py", line 23, in apply_annotations
+    corr = anno_turn["correct"]
+KeyError: 'correct'

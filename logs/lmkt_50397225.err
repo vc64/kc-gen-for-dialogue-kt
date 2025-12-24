@@ -1,0 +1,48 @@
+Removing conda version miniforge3-24.7.1
+No conda package cache directories found outside your home directory. To
+prevent conda from filling up your home directory, you can create a new
+directory at `/work/pi_<your_pi_name>/$USER/.conda/pkgs` and reload the module. 
+No conda environment directories found outside your home directory. To prevent
+conda from filling up your home directory, you can create a new directory at
+`/work/pi_<your_pi_name>/$USER/.conda/envs` and reload the module. 
+Loading conda version miniforge3-24.7.1
+Loading cuda version 12.6
+Loading cudnn version 8.9.7.29-12
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:21<01:05, 21.96s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:34<00:33, 16.58s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:44<00:13, 13.54s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:45<00:00,  8.43s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:45<00:00, 11.32s/it]
+Traceback (most recent call last):
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 71, in <module>
+    main()
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 68, in main
+    args.func(args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 127, in train
+    return crossval(args, fn)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 92, in crossval
+    metrics = fn(args, fold)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 227, in train_lmkt
+    model, tokenizer = get_model(args.base_model, False, pt_model_name=args.pt_model_name, r=args.r, lora_alpha=args.lora_alpha, quantize=args.quantize)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/models/lm.py", line 54, in get_model
+    model = get_peft_model(model, peft_config)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/mapping.py", line 183, in get_peft_model
+    return MODEL_TYPE_TO_PEFT_MODEL_MAPPING[peft_config.task_type](
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/peft_model.py", line 1542, in __init__
+    super().__init__(model, peft_config, adapter_name, **kwargs)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/peft_model.py", line 155, in __init__
+    self.base_model = cls(model, {adapter_name: peft_config}, adapter_name)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/lora/model.py", line 139, in __init__
+    super().__init__(model, config, adapter_name)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/tuners_utils.py", line 175, in __init__
+    self.inject_adapter(self.model, adapter_name)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/tuners_utils.py", line 431, in inject_adapter
+    self._create_and_replace(peft_config, adapter_name, target, target_name, parent, current_key=key)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/lora/model.py", line 224, in _create_and_replace
+    new_module = self._create_new_module(lora_config, adapter_name, target, **kwargs)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/lora/model.py", line 340, in _create_new_module
+    new_module = dispatcher(target, adapter_name, lora_config=lora_config, **kwargs)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/lora/bnb.py", line 273, in dispatch_bnb_8bit
+    "memory_efficient_backward": target.state.memory_efficient_backward,
+AttributeError: 'MatmulLtState' object has no attribute 'memory_efficient_backward'

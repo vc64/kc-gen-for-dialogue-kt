@@ -160,6 +160,24 @@ def load_annotated_data(args, fold: Union[int, str, None] = 1):
             train_df[int(.8 * len(train_df)):],
             test_df
         )
+    elif args.dataset == "eedi":
+        train_df = pd.read_csv(f"data/annotated/eedi_train_{args.tag_src}.csv", converters={col: literal_eval for col in ["dialogue", "meta_data", "annotation"]})
+        train_df = train_df.sample(frac=1, random_state=221)
+        test_df = pd.read_csv(f"data/annotated/eedi_test_{args.tag_src}.csv", converters={col: literal_eval for col in ["dialogue", "meta_data", "annotation"]})
+        return (
+            train_df[:int(.8 * len(train_df))],
+            train_df[int(.8 * len(train_df)):],
+            test_df
+        )
+    elif args.dataset == "trial":
+        train_df = pd.read_csv("data/annotated/eedi_temp_train_atc.csv", converters={col: literal_eval for col in ["dialogue", "meta_data", "annotation"]})
+        train_df = train_df.sample(frac=1, random_state=221)
+        test_df = pd.read_csv("data/annotated/eedi_temp_test_atc.csv", converters={col: literal_eval for col in ["dialogue", "meta_data", "annotation"]})
+        return (
+            train_df[:int(.8 * len(train_df))],
+            train_df[int(.8 * len(train_df)):],
+            test_df
+        )
     raise Exception(f"Loading not supported for {args.dataset}")
 
 def get_model_file_suffix(args, fold = None):

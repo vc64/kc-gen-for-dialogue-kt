@@ -43,7 +43,7 @@ def visualize_average(kc_info, args):
         lens = [len(probs) for probs in prob_lists]
         print(f"{kc_idx} - {kc}: {len(prob_lists)} dialogues, >1 occurrence: {gt1_count}, avg len: {sum(lens) / len(lens):.2f}")
         plt.rcParams["figure.figsize"] = (9, 6)
-        plt.rcParams["font.size"] = 28
+        plt.rcParams["font.size"] = 24
         if plot_means:
             means = []
             stds = []
@@ -57,13 +57,13 @@ def visualize_average(kc_info, args):
             for probs in prob_lists:
                 plt.plot(np.arange(len(probs)), probs)
         plt.grid(True, which="major")
-        plt.axis([.5, 15.5, -.42, .42])
+        plt.axis([.5, 15.5, -.62, .62])
         plt.xticks(np.arange(1, 16, 2))
         plt.xlabel("KC Occurrence")
         plt.ylabel("Change in KC Mastery")
         # plt.title("\n".join(wrap(kc.split(";")[0], 70)), fontsize=24)
         # plt.show()
-        plt.savefig(f"results/linear_kc_{args.dataset}_{kc_idx}{'_delta' if plot_deltas else ''}.png", dpi=300, bbox_inches="tight")
+        plt.savefig(f"results/linear_kc_{args.dataset}_{args.tag_src}_{kc_idx}{'_delta' if plot_deltas else ''}.png", dpi=300, bbox_inches="tight")
         plt.close()
 
 def analyze_qual_data(args):

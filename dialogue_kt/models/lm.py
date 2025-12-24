@@ -9,13 +9,14 @@ bnb_config = BitsAndBytesConfig(
 )
 
 def get_base_model(base_model_name: str, tokenizer: AutoTokenizer, quantize: bool):
+    # print("QUANTIZE:", quantize)
     base_model = AutoModelForCausalLM.from_pretrained(
         base_model_name,
         pad_token_id=tokenizer.pad_token_id,
         quantization_config=bnb_config if quantize else None,
         # f32 seems helpful for train/test time consistency when quantizing, bf16 performs best for non-quantized
         torch_dtype=torch.float32 if quantize else torch.bfloat16,
-        device_map={"": 0}
+        device_map="auto" if quantize else {"": 0}
     )
     base_model.config.use_cache = False
     base_model.config.pretraining_tp = 1

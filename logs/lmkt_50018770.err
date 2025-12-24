@@ -1,0 +1,32 @@
+No conda package cache directories found outside your home directory. To
+prevent conda from filling up your home directory, you can create a new
+directory at `/work/pi_<your_pi_name>/$USER/.conda/pkgs` and reload the module. 
+No conda environment directories found outside your home directory. To prevent
+conda from filling up your home directory, you can create a new directory at
+`/work/pi_<your_pi_name>/$USER/.conda/envs` and reload the module. 
+Loading conda version miniforge3-24.7.1
+Loading cuda version 12.6
+Loading cudnn version 8.9.7.29-12
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:11<00:33, 11.17s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:21<00:21, 10.78s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:32<00:10, 10.58s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:34<00:00,  7.35s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:34<00:00,  8.60s/it]
+Traceback (most recent call last):
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 71, in <module>
+    main()
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 68, in main
+    args.func(args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 127, in train
+    return crossval(args, fn)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 92, in crossval
+    metrics = fn(args, fold)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 240, in train_lmkt
+    train_dataset = KTDataset(train_df, tokenizer, args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/kt_data_loading.py", line 119, in __init__
+    {"role": "system", "content": kt_system_prompt(args)},
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/prompting.py", line 132, in kt_system_prompt
+    return KT_SYSTEM_PROMPT.format(desc=get_dataset_desc(args))
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/prompting.py", line 85, in get_dataset_desc
+    raise Exception(f"No dataset description defined for {args.dataset}")
+Exception: No dataset description defined for eedi

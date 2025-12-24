@@ -1,0 +1,56 @@
+No conda package cache directories found outside your home directory. To
+prevent conda from filling up your home directory, you can create a new
+directory at `/work/pi_<your_pi_name>/$USER/.conda/pkgs` and reload the module. 
+No conda environment directories found outside your home directory. To prevent
+conda from filling up your home directory, you can create a new directory at
+`/work/pi_<your_pi_name>/$USER/.conda/envs` and reload the module. 
+Loading conda version miniforge3-24.7.1
+Loading cuda version 12.6
+Loading cudnn version 8.9.7.29-12
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:10<00:30, 10.12s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:19<00:19,  9.84s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:29<00:09,  9.71s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:31<00:00,  6.80s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:31<00:00,  7.92s/it]
+Could not find the bitsandbytes CUDA binary at PosixPath('/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/bitsandbytes/libbitsandbytes_cuda128.so')
+The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+Traceback (most recent call last):
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 71, in <module>
+    main()
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/main.py", line 68, in main
+    args.func(args)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 127, in train
+    return crossval(args, fn)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 92, in crossval
+    metrics = fn(args, fold)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/training.py", line 227, in train_lmkt
+    model, tokenizer = get_model(args.base_model, False, pt_model_name=args.pt_model_name, r=args.r, lora_alpha=args.lora_alpha, quantize=args.quantize)
+  File "/home/vqchen_umass_edu/dialogue-kt/dialogue_kt/models/lm.py", line 53, in get_model
+    model = get_peft_model(model, peft_config)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/mapping.py", line 183, in get_peft_model
+    return MODEL_TYPE_TO_PEFT_MODEL_MAPPING[peft_config.task_type](
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/peft_model.py", line 1542, in __init__
+    super().__init__(model, peft_config, adapter_name, **kwargs)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/peft_model.py", line 155, in __init__
+    self.base_model = cls(model, {adapter_name: peft_config}, adapter_name)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/lora/model.py", line 139, in __init__
+    super().__init__(model, config, adapter_name)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/tuners_utils.py", line 175, in __init__
+    self.inject_adapter(self.model, adapter_name)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/tuners_utils.py", line 431, in inject_adapter
+    self._create_and_replace(peft_config, adapter_name, target, target_name, parent, current_key=key)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/lora/model.py", line 224, in _create_and_replace
+    new_module = self._create_new_module(lora_config, adapter_name, target, **kwargs)
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/lora/model.py", line 317, in _create_new_module
+    from .bnb import dispatch_bnb_8bit
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/peft/tuners/lora/bnb.py", line 19, in <module>
+    import bitsandbytes as bnb
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/bitsandbytes/__init__.py", line 15, in <module>
+    from .nn import modules
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/bitsandbytes/nn/__init__.py", line 17, in <module>
+    from .triton_based_modules import (
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/bitsandbytes/nn/triton_based_modules.py", line 7, in <module>
+    from bitsandbytes.triton.int8_matmul_mixed_dequantize import (
+  File "/home/vqchen_umass_edu/.conda/envs/LLMKT/lib/python3.10/site-packages/bitsandbytes/triton/int8_matmul_mixed_dequantize.py", line 12, in <module>
+    from triton.ops.matmul_perf_model import early_config_prune, estimate_matmul_time
+ModuleNotFoundError: No module named 'triton.ops'
